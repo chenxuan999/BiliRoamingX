@@ -12,9 +12,15 @@ plugins {
 group = "app.revanced.bilibili"
 
 dependencies {
+    // 强制替换传递依赖
+    modules {
+        module("kofua.app.revanced:apktool-lib") {
+            replacedBy("com.android.tools.build:apktool-lib")
+        }
+    }
+
     implementation(libs.revanced.patcher)
     implementation(libs.smali)
-    // Used in JsonGenerator.
     implementation(libs.gson)
 }
 
