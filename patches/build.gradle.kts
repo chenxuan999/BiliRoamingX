@@ -16,7 +16,7 @@ dependencies {
         exclude(group = "kofua.app.revanced", module = "apktool-lib")
     }
     // 手动补回官方版本
-    implementation("com.android.tools.build:apktool-lib:9.3.0")
+    implementation("app.revanced:revanced-patcher")
 
     implementation(libs.smali)
     implementation(libs.gson)
@@ -99,6 +99,13 @@ publishing {
                     ?: System.getenv("GITHUB_TOKEN")
             }
         }
+        maven {
+            url = uri("https://maven.pkg.github.com/ReVanced/revanced-patcher")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+       }
     }
 
     publications {
