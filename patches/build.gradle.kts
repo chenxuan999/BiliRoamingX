@@ -12,14 +12,12 @@ plugins {
 group = "app.revanced.bilibili"
 
 dependencies {
-    // 强制替换传递依赖
-    modules {
-        module("kofua.app.revanced:apktool-lib") {
-            replacedBy("com.android.tools.build:apktool-lib")
-        }
+    implementation(libs.revanced.patcher) {
+        exclude(group = "kofua.app.revanced", module = "apktool-lib")
     }
+    // 手动补回官方版本
+    implementation("com.android.tools.build:apktool-lib:9.3.0")
 
-    implementation(libs.revanced.patcher)
     implementation(libs.smali)
     implementation(libs.gson)
 }
