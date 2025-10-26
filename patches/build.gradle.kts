@@ -16,7 +16,7 @@ dependencies {
         exclude(group = "kofua.app.revanced", module = "apktool-lib")
     }
     // 手动补回官方版本
-    implementation("app.revanced:revanced-patcher")
+    implementation("app.revanced:revanced-patcher:21.0.0")
 
     implementation(libs.smali)
     implementation(libs.gson)
