@@ -102,8 +102,10 @@ publishing {
         maven {
             url = uri("https://maven.pkg.github.com/ReVanced/revanced-patcher")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = (project.findProperty("gpr.user") as? String)
+                    ?: System.getenv("GITHUB_ACTOR")
+                password = (project.findProperty("gpr.key") as? String)
+                    ?: System.getenv("GITHUB_TOKEN")
             }
        }
     }
